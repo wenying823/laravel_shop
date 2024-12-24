@@ -19,7 +19,7 @@ onMounted(() => {
 
 const addToCart = (productId: number) => {
 
-    axios.post('/api/cart/add', { product_id: productId })
+    axios.post('/cart/add', { product_id: productId })
         .then(response => {
             alert('Product added to cart!');
             fetchCartCount();
@@ -31,7 +31,7 @@ const addToCart = (productId: number) => {
 };
 
 function fetchCartCount() {
-    axios.get('/api/cart/count')
+    axios.get('/cart/count')
         .then(response => {
             cartCount.value = response.data.count;
         })

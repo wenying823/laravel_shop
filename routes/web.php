@@ -31,7 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 });
 
-Route::post('/api/cart/add', [CartController::class, 'add']);
-Route::get('/api/cart/count', [CartController::class, 'count']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart/count', [CartController::class, 'count']);
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [CartController::class, 'add']);
+    Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+});
 
 require __DIR__.'/auth.php';
