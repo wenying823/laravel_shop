@@ -41,6 +41,17 @@ const updateQuantity = (productId: number, newQuantity: number) => {
         alert('Failed to update cart.');
     });
 };
+const checkout = () => {
+    axios.post('/orders')
+        .then(response => {
+            alert('Order placed successfully!');
+            window.location.href = '/orders';
+        })
+        .catch(error => {
+            console.error('Error creating order:', error);
+            alert('Failed to create order.');
+        });
+};
 </script>
 
 <template>
@@ -87,6 +98,12 @@ const updateQuantity = (productId: number, newQuantity: number) => {
                         </div>
                     </div>
                 </div>
+                <button
+                    class="px-4 py-2 bg-blue-500 text-white rounded-md"
+                    @click="checkout"
+                >
+                    Checkout
+                </button>
             </div>
         </div>
     </AuthenticatedLayout>
