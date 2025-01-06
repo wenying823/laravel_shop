@@ -44,4 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 });
 
+Route::prefix('api')->group(function () {
+    require base_path('routes/api.php');
+});
+
 require __DIR__.'/auth.php';
