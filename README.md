@@ -169,14 +169,3 @@
 - **`app/Http/Controllers`**：控制器文件目錄，處理業務邏輯。  
 - **`app/Models`**：模型文件目錄，對應資料庫結構。  
 
----
-
-## 貢獻指南  
-
-歡迎提交 Issue 或 Pull Request，參與貢獻本專案。  
-
----
-
-## 授權  
-
-本專案採用 [MIT License](https://opensource.org/licenses/MIT)。  
