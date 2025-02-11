@@ -1,70 +1,182 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel Shop 專案  
 
-## About Laravel
+## 專案簡介  
+這是一個基於 Laravel 開發的簡易電商系統，提供了用戶認證、產品管理、購物車功能、訂單系統以及基礎的 RESTful API，適合作為學習或開發電商應用的基礎框架。  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 功能列表  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **用戶功能**  
+   - 設置用戶登入、登出功能（使用 Laravel Breeze）。  
 
-## Learning Laravel
+2. **產品功能**  
+   - 設置產品資料庫結構（MySQL）。  
+   - 創建產品頁面，顯示產品資訊（名稱、價格、描述、圖片等）。  
+   - 使用 Redis 快取技術快速加載產品資訊，提升系統效能。  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. **購物車功能**  
+   - 添加購物車功能，讓用戶可以將產品加入購物車並調整數量。  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+4. **訂單功能**  
+   - 設置訂單系統，讓用戶可以下訂單並完成結帳。  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. **RESTful API**  
+   - 提供以下 API 接口，讓第三方系統可以獲取產品資料：  
+     - **GET `/api/products`**：獲取所有產品資訊。  
+     - **GET `/api/products/{id}`**：根據產品 ID 獲取單一產品的詳細資訊。  
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 技術棧  
 
-### Premium Partners
+- **Laravel 10**：後端框架。  
+- **MySQL**：資料庫，用於儲存用戶、產品和訂單數據。  
+- **Redis**：用於快取產品資訊，提升查詢效能。  
+- **Inertia.js**：前後端整合框架，用於頁面渲染和交互。  
+- **Vue 3**：前端框架（如果適用）。  
+- **Laravel Breeze**：用於快速搭建用戶認證功能。  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## 安裝與使用  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. 環境需求  
+- PHP >= 8.1  
+- Composer  
+- Node.js  
+- MySQL  
+- Redis  
 
-## Code of Conduct
+### 2. 安裝步驟  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **克隆專案到本地**  
+   ```bash
+   git clone https://github.com/wenying823/laravel_shop.git
+   cd laravel_shop
+   ```
 
-## Security Vulnerabilities
+2. **安裝相依套件**  
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **配置環境變數**  
+   複製 `.env.example` 文件並重命名為 `.env`，然後修改以下內容：  
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=你的資料庫名稱
+   DB_USERNAME=你的資料庫用戶名
+   DB_PASSWORD=你的資料庫密碼
 
-## License
+   CACHE_DRIVER=redis
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# laravel_shop
->>>>>>> 7bb9e970800041173d4168317aef24f037e65664
+4. **生成應用密鑰**  
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **執行資料庫遷移**  
+   ```bash
+   php artisan migrate
+   ```
+
+6. **啟動伺服器**  
+   ```bash
+   php artisan serve
+   ```
+
+   預設伺服器地址為：[http://127.0.0.1:8000](http://127.0.0.1:8000)。  
+
+---
+
+## 使用說明  
+
+### API 測試  
+
+以下是系統提供的 API 接口，返回的 JSON 結構包括 `success`、`data` 和 `message` 字段，用於描述操作結果和返回數據：  
+
+1. **獲取所有產品資訊**  
+   - **URL**: `GET /api/products`  
+   - **範例回應**:  
+     ```json
+     {
+       "success": true,
+       "data": [
+         {
+           "id": 1,
+           "name": "voluptas",
+           "description": "Et autem quo quae provident rerum amet.",
+           "price": "51.34",
+           "stock": 48,
+           "image": "https://picsum.photos/200/300",
+           "created_at": "2024-12-20T07:04:14.000000Z",
+           "updated_at": "2024-12-20T07:04:14.000000Z"
+         },
+         {
+           "id": 2,
+           "name": "veniam",
+           "description": "Harum reiciendis quaerat saepe sint distinctio laborum quis ad corporis animi.",
+           "price": "95.49",
+           "stock": 12,
+           "image": "https://picsum.photos/200/300",
+           "created_at": "2024-12-20T07:04:14.000000Z",
+           "updated_at": "2024-12-20T07:04:14.000000Z"
+         }
+       ],
+       "message": "產品列表獲取成功"
+     }
+     ```
+
+2. **獲取單一產品資訊**  
+   - **URL**: `GET /api/products/{id}`  
+   - **範例回應（成功）**:  
+     ```json
+     {
+       "success": true,
+       "data": {
+         "id": 1,
+         "name": "voluptas",
+         "description": "Et autem quo quae provident rerum amet.",
+         "price": "51.34",
+         "stock": 48,
+         "image": "https://picsum.photos/200/300",
+         "created_at": "2024-12-20T07:04:14.000000Z",
+         "updated_at": "2024-12-20T07:04:14.000000Z"
+       },
+       "message": "產品詳情獲取成功"
+     }
+     ```
+   - **範例回應（失敗，產品不存在）**:  
+     ```json
+     {
+       "success": false,
+       "message": "產品未找到"
+     }
+     ```
+
+---
+
+## 項目結構  
+
+- **`routes/web.php`**：網站主要功能路由。  
+- **`routes/api.php`**：API 路由，用於提供外部接口。  
+- **`app/Http/Controllers`**：控制器文件目錄，處理業務邏輯。  
+- **`app/Models`**：模型文件目錄，對應資料庫結構。  
+
+---
+
+## 貢獻指南  
+
+歡迎提交 Issue 或 Pull Request，參與貢獻本專案。  
+
+---
+
+## 授權  
+
+本專案採用 [MIT License](https://opensource.org/licenses/MIT)。  
